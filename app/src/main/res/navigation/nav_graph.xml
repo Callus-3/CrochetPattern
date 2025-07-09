@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/pattern_browser"
+    android:id="@+id/nav_graph">
+
+    <fragment
+        android:id="@+id/pattern_detail"
+        android:name="edu.vt.mobiledev.crochetmaker.PatternFragment"
+        android:label="PatternFragment"
+        tools:layout="@layout/fragment_pattern_detail">
+        <action
+            android:id="@+id/open_stitch_index"
+            app:destination="@id/stitch_in" />
+        <argument
+            android:name="patternId"
+            app:argType="java.util.UUID" />
+        <action
+            android:id="@+id/action_pattern_detail_to_pattern_browser"
+            app:destination="@id/pattern_browser" />
+    </fragment>
+    <fragment
+        android:id="@+id/stitch_in"
+        android:name="edu.vt.mobiledev.crochetmaker.StitchListFragment"
+        tools:layout="@layout/stitch_index"
+        android:label="StitchListFragment" />
+    <fragment
+        android:id="@+id/pattern_browser"
+        android:label="PatternBrowser"
+        android:name="edu.vt.mobiledev.crochetmaker.PatternListFragment"
+        tools:layout="@layout/patternbrowser">
+        <action
+            android:id="@+id/show_pattern_detail"
+            app:destination="@id/pattern_detail" />
+        <action
+            android:id="@+id/create_pattern"
+            app:destination="@id/newPattern" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/newpattern"
+        android:id="@+id/newPattern"
+        android:name="edu.vt.mobiledev.crochetmaker.newPattern"
+        android:label="newPattern" />
+</navigation>
